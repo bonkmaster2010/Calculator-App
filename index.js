@@ -1,4 +1,4 @@
-
+window.onload = () => {
 let btns = document.querySelectorAll("button");
 let input = document.getElementById("input");
 
@@ -7,10 +7,7 @@ function valuetrans() {
     button.addEventListener("click", () => {
       let value = button.textContent;
 
-      if (value === "=") {
-          input.value = eval(input.value);
-        
-      } else if (value === "C") {
+  if (value === "C") {
         input.value = ''; 
       } else {
         input.value += value; 
@@ -19,4 +16,16 @@ function valuetrans() {
   });
 }
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    try {
+      e.preventDefault();
+      input.value = eval(input.value);
+    } catch {
+      input.value = "Error";
+    }
+  }
+});
+
 valuetrans();
+}
